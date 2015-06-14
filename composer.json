@@ -1,0 +1,20 @@
+{
+  "name": "smskin/vkservice",
+  "description": "Laravel VK Components",
+  "authors": [
+    {
+      "name": "Sergey Mikhaylov",
+      "email": "serg@msoinvest.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "autoload": {
+    "classmap": [],
+    "psr-0": {
+      "SMSkin\\VKService\\": "src/"
+    }
+  },
+  "minimum-stability": "stable"
+}
