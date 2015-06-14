@@ -14,8 +14,6 @@ http://oauth.vk.com/authorize?client_id=[ID приложения]&scope=wall,off
 
 access_token необходим для работы с закрытой частью Api VK
 
-[code]
 $SendMessageToWall = new SendMessageToWall();
 
 $SendMessageToWall->submitMessage('работает!','http://ya.ru',true);
-[/code]
