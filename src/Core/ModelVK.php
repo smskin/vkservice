@@ -7,6 +7,7 @@
  */
 
 namespace SMSkin\VKService\Core;
+
 use Illuminate\Support\Facades\Config;
 
 /**

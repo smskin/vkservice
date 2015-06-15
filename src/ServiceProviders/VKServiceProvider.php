@@ -10,7 +10,8 @@ namespace SMSkin\VKService\ServiceProviders;
 
 use Illuminate\Support\ServiceProvider;
 
-class VKServiceProvider extends ServiceProvider {
+class VKServiceProvider extends ServiceProvider
+{
 
     /**
      * Indicates if loading of the provider is deferred.
