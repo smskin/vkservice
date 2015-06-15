@@ -17,23 +17,24 @@ Add the following packages to your `composer.json`
    "smskin/vkservice": "dev-master"
 }
 ```
-Next, run `composer update`
+Next, run `composer update`.
 
-Next, add the following service providers to your `config/app.php`
+Next, add the following service providers to your `config/app.php`.
 ```
 'providers' => [
 	...
 	'SMSkin\VKService\ServiceProviders\VKServiceProvider'
 ]
 ```
-Next, run `php artisan vendor:publish`
-This creates a config file `app/config/vksettings.php`
+Next, run `php artisan vendor:publish`.
+
+This creates a config file `app/config/vksettings.php`.
 
 Configuration
 -------------
 
  - accessToken
-	1. You must create Standalone application VKontakte at http://vk.com/editapp?act=create. After creating you get Application ID.
+	1. You must create Standalone application VKontakte at http://vk.com/editapp?act=create. After that you get Application ID.
 	2. It is necessary to go to the address for access_token (appears in the address bar).
 	Access_token needs to work with a closed part of Api VK.
 	http://oauth.vk.com/authorize?client_id=[ApplicationID]&scope=wall,offline&redirect_uri=http://oauth.vk.com/blank.html&response_type=token
