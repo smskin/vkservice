@@ -6,9 +6,9 @@
  * Time: 21:06
  */
 
-namespace SMSkin\VKService\Exception;
+namespace SMSkin\VKService\Api\Wall\Exceptions;
 
-class SendMessageToWallException
+class PostException
 {
     public $result;
     public $errorCode;

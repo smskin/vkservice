@@ -6,9 +6,9 @@
  * Time: 21:07
  */
 
-namespace SMSkin\VKService\Results;
+namespace SMSkin\VKService\Api\Wall\Results;
 
-class SendMessageToWallResult
+class WallPostResult
 {
     public $result;
     public $postId;

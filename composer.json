@@ -12,12 +12,7 @@
   },
   "autoload": {
     "classmap": [
-      "src/Core/ModelVK.php",
-      "src/Exception/Exception.php",
-      "src/Exception/SendMessageToWallException.php",
-      "src/Requests/SendMessageToWall.php",
-      "src/Results/SendMessageToWallResult.php",
-      "src/ServiceProviders/VKServiceProvider.php"
+      "src/"
     ],
     "psr-0": {
       "SMSkin\\VKService\\": "src/"
