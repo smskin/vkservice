@@ -96,7 +96,7 @@ class WallRestore
     }
 
     /**
-     * @return array|false
+     * @return PostException|WallEditResult
      */
     public function restore()
     {

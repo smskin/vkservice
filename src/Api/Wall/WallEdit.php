@@ -174,7 +174,7 @@ class WallEdit
     }
 
     /**
-     * @return array|false
+     * @return PostException|WallEditResult
      */
     public function save()
     {

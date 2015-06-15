@@ -96,7 +96,7 @@ class WallDelete
     }
 
     /**
-     * @return array|false
+     * @return PostException|WallEditResult
      */
     public function delete()
     {

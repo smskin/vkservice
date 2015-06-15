@@ -159,7 +159,7 @@ class WallPost
     }
 
     /**
-     * @return array|false
+     * @return PostException|WallPostResult
      */
     public function save()
     {
