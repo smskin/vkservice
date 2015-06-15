@@ -38,14 +38,10 @@ Configuration
 	Access_token needs to work with a closed part of Api VK.
 	http://oauth.vk.com/authorize?client_id=[ApplicationID]&scope=wall,offline&redirect_uri=http://oauth.vk.com/blank.html&response_type=token
 	3.  Copy access_token from the address bar.
- - userId
-    Social network user ID
- - groupId
-    Social network group ID
- - exportMessage 
-    Export recording, if the user has configured the appropriate option.
- - exportServices
-    An array of social networks in which to export the recording. When the function is activated exportMessage
+ - userId - Social network user ID
+ - groupId - Social network group ID
+ - exportMessage - Export recording, if the user has configured the appropriate option.
+ - exportServices - An array of social networks in which to export the recording. When the function is activated exportMessage
     
 Working with the wall
 -------------
