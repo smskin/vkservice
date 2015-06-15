@@ -10,8 +10,10 @@ return array(
     'SMSkin\\VKService\\Api\\Wall\\Exceptions\\PostException' => $baseDir . '/src/Api/Wall/Exceptions/PostException.php',
     'SMSkin\\VKService\\Api\\Wall\\Results\\WallEditResult' => $baseDir . '/src/Api/Wall/Results/WallEditResult.php',
     'SMSkin\\VKService\\Api\\Wall\\Results\\WallPostResult' => $baseDir . '/src/Api/Wall/Results/WallPostResult.php',
+    'SMSkin\\VKService\\Api\\Wall\\WallDelete' => $baseDir . '/src/Api/Wall/WallDelete.php',
     'SMSkin\\VKService\\Api\\Wall\\WallEdit' => $baseDir . '/src/Api/Wall/WallEdit.php',
     'SMSkin\\VKService\\Api\\Wall\\WallPost' => $baseDir . '/src/Api/Wall/WallPost.php',
+    'SMSkin\\VKService\\Api\\Wall\\WallRestore' => $baseDir . '/src/Api/Wall/WallRestore.php',
     'SMSkin\\VKService\\Core\\ModelVK' => $baseDir . '/src/Core/ModelVK.php',
     'SMSkin\\VKService\\ServiceProviders\\VKServiceProvider' => $baseDir . '/src/ServiceProviders/VKServiceProvider.php',
 );

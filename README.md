@@ -57,9 +57,23 @@ $post->save();
 Example of editing posts
 ```
 $post = new WallEdit();
-$post->setMessageId(1);
+$post->whereMessageId(1);
 $post->setMessageText('New message text');
 $post->setAttachUrl('http://google.com');
-$post->setToGroup(true);
+$post->whereInGroup(true);
 $post->save();
+```
+Example of deleting posts
+```
+$post = new WallDelete();
+$post->whereMessageId(1);
+$post->whereInGroup(true);
+$post->delete();
+```
+Example of restoring posts
+```
+$post = new WallRestore();
+$post->whereMessageId(1);
+$post->whereInGroup(true);
+$post->restore();
 ```
