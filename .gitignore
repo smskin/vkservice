@@ -1,4 +1,3 @@
 test.php
-vendor
 src/Config.php
 src/ServiceProvider.php
