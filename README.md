@@ -80,7 +80,7 @@ $post->restore();
 Example of uploading image to wall
 ```
 $image = new PhotosStoreOnWall();
-$image->setToGroup(true); //Send a message on the wall of the group
+$image->setToGroup(true); //Send a image on the wall of the group
 $image->setImagePath('file.jpg');
 $image->save();
 ```
