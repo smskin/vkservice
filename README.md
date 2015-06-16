@@ -37,7 +37,7 @@ Configuration
 	1. You must create Standalone application VKontakte at http://vk.com/editapp?act=create. After that you get Application ID.
 	2. It is necessary to go to the address for access_token (appears in the address bar).
 	Access_token needs to work with a closed part of Api VK.
-	http://oauth.vk.com/authorize?client_id=[ApplicationID]&scope=wall,offline&redirect_uri=http://oauth.vk.com/blank.html&response_type=token
+	http://oauth.vk.com/authorize?client_id=[ApplicationID]&scope=wall,photos,offline&redirect_uri=http://oauth.vk.com/blank.html&response_type=token
 	3.  Copy access_token from the address bar.
  - userId - Social network user ID
  - groupId - Social network group ID
@@ -76,4 +76,11 @@ $post = new WallRestore();
 $post->whereMessageId(1);
 $post->whereInGroup(true);
 $post->restore();
+```
+Example of uploading image to wall
+```
+$image = new PhotosStoreOnWall();
+$image->setToGroup(true); //Send a message on the wall of the group
+$image->setImagePath('file.jpg');
+$image->save();
 ```

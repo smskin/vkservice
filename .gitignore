@@ -2,3 +2,6 @@ test.php
 vendor
 src/Config.php
 src/ServiceProvider.php
+src/App.php
+src/Log.php
+marker.jpg

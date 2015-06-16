@@ -8,7 +8,7 @@
 
 namespace SMSkin\VKService\Api\Wall;
 
-use SMSkin\VKService\Api\Wall\Exceptions\PostException;
+use SMSkin\VKService\Api\Exceptions\ApiException;
 use SMSkin\VKService\Api\Wall\Results\WallPostResult;
 use SMSkin\VKService\Core\ModelVK;
 use Illuminate\Support\Facades\Config;
@@ -159,7 +159,7 @@ class WallPost
     }
 
     /**
-     * @return PostException|WallPostResult
+     * @return ApiException|WallPostResult
      */
     public function save()
     {
@@ -192,7 +192,7 @@ class WallPost
 
     /**
      * @param string $response
-     * @return PostException|WallPostResult
+     * @return ApiException|WallPostResult
      */
     private function parseResponse($response)
     {
@@ -203,17 +203,6 @@ class WallPost
             $result->postId = $response['response']['post_id'];
             return $result;
         }
-        $result = new PostException();
-        if (array_key_exists('error', $response)) {
-            $result->result = false;
-            $result->errorCode = $response['error']['error_code'];
-            $result->errorMsg = $response['error']['error_msg'];
-            $result->request = $response['error']['request_params'];
-            return $result;
-        }
-        $result->result = false;
-        $result->errorCode = 0;
-        $result->errorMsg = 'Undefined exception';
-        return $result;
+        new ApiException($response);
     }
 }

@@ -9,7 +9,7 @@
 namespace SMSkin\VKService\Api\Wall;
 
 use Illuminate\Support\Facades\Config;
-use SMSkin\VKService\Api\Wall\Exceptions\PostException;
+use SMSkin\VKService\Api\Exceptions\ApiException;
 use SMSkin\VKService\Api\Wall\Results\WallEditResult;
 use SMSkin\VKService\Core\ModelVK;
 
@@ -96,7 +96,7 @@ class WallRestore
     }
 
     /**
-     * @return PostException|WallEditResult
+     * @return ApiException|WallEditResult
      */
     public function restore()
     {
@@ -119,7 +119,7 @@ class WallRestore
 
     /**
      * @param string $response
-     * @return PostException|WallEditResult
+     * @return ApiException|WallEditResult
      */
     private function parseResponse($response)
     {
@@ -129,7 +129,7 @@ class WallRestore
             $result->result = true;
             return $result;
         }
-        $result = new PostException();
+        $result = new ApiException();
         if (array_key_exists('error', $response)) {
             $result->result = false;
             $result->errorCode = $response['error']['error_code'];
