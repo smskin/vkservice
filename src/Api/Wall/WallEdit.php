@@ -63,6 +63,12 @@ class WallEdit
      *          false — запись будет опубликована на стене пользователя
      */
     private $toGroup;
+
+    /**
+     * @var bool|array
+     */
+    private $attachments;
+
     /**
      * @var bool|string дата публикации записи в формате unixtime
      */
@@ -80,9 +86,20 @@ class WallEdit
         $this->exportServices = Config::get('vksettings.exportServices');
         $this->messageId = 0;
         $this->messageText = '';
-        $this->attachUrl = false;
         $this->toGroup = false;
         $this->delay = false;
+        $this->attachUrl = false;
+        $this->attachments = false;
+    }
+
+    /**
+     * @param array|bool $attachments
+     * @return $this
+     */
+    public function setAttachments($attachments)
+    {
+        $this->attachments = $attachments;
+        return $this;
     }
 
     /**
@@ -192,8 +209,15 @@ class WallEdit
                 );
                 break;
         }
+        $attachments = array();
         if ($this->attachUrl!==false) {
-            $params['attachments']=$this->attachUrl;
+            $attachments[]=$this->attachUrl;
+        }
+        if ($this->attachments !== false) {
+            $attachments = array_merge($attachments, $this->attachments);
+        }
+        if (count($attachments)) {
+            $params['attachments']=implode(',', $attachments);
         }
         if ($this->exportMessage) {
             $params['services'] = implode(',', $this->exportServices);
