@@ -51,6 +51,10 @@ An example of sending a message on the wall
 $post = new WallPost();
 $post->setMessageText('Test message');
 $post->setAttachUrl('http://vk.com');
+$post->setAttachments(array(
+    'photo100172_166443618',
+    'photo66748_265827614'
+));
 $post->setToGroup(true); //Send a message on the wall of the group
 $post->save();
 ```
@@ -60,6 +64,10 @@ $post = new WallEdit();
 $post->whereMessageId(1);
 $post->setMessageText('New message text');
 $post->setAttachUrl('http://google.com');
+$post->setAttachments(array(
+    'photo100172_166443618',
+    'photo66748_265827614'
+));
 $post->whereInGroup(true);
 $post->save();
 ```
