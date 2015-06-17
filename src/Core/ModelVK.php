@@ -28,10 +28,11 @@ class ModelVK
 
     /**
      * Class constructor
+     * @param $connectionName
      */
-    public function __construct()
+    public function __construct($connectionName)
     {
-        $this->accessToken = Config::get('vksettings.accessToken');
+        $this->accessToken = Config::get('vksettings.connections.'.$connectionName.'.accessToken');
     }
 
     /**

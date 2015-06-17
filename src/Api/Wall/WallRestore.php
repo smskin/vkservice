@@ -16,6 +16,10 @@ use SMSkin\VKService\Core\ModelVK;
 class WallRestore
 {
     /**
+     * @var string
+     */
+    private $connectionName;
+    /**
      * @var ModelVK
      */
     private $vkConnect;
@@ -46,11 +50,26 @@ class WallRestore
      */
     public function __construct()
     {
-        $this->vkConnect = new ModelVK();
-        $this->userId = Config::get('vksettings.userId');
-        $this->groupId = '-'.Config::get('vksettings.groupId'); //Group ID указывается со знаком -
+        $vkSettings = Config::get('vksettings.connections');
+        if (!array_key_exists($this->connectionName, $vkSettings)) {
+            $this->connectionName = 'default';
+        }
+
+        $this->vkConnect = new ModelVK($this->connectionName);
+        $this->userId = Config::get('vksettings.connections.'.$this->connectionName.'.userId');
+        $this->groupId = '-'.Config::get('vksettings.connections.'.$this->connectionName.'.groupId');
         $this->messageId = 0;
         $this->toGroup = false;
+    }
+
+    /**
+     * @param string $connectionName
+     * @return $this
+     */
+    public function setConnection($connectionName)
+    {
+        $this->connectionName = $connectionName;
+        return $this;
     }
 
     /**
@@ -129,17 +148,6 @@ class WallRestore
             $result->result = true;
             return $result;
         }
-        $result = new ApiException();
-        if (array_key_exists('error', $response)) {
-            $result->result = false;
-            $result->errorCode = $response['error']['error_code'];
-            $result->errorMsg = $response['error']['error_msg'];
-            $result->request = $response['error']['request_params'];
-            return $result;
-        }
-        $result->result = false;
-        $result->errorCode = 0;
-        $result->errorMsg = 'Undefined exception';
-        return $result;
+        new ApiException($response);
     }
 }

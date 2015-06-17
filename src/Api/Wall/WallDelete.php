@@ -13,8 +13,16 @@ use SMSkin\VKService\Api\Exceptions\ApiException;
 use SMSkin\VKService\Api\Wall\Results\WallEditResult;
 use SMSkin\VKService\Core\ModelVK;
 
+/**
+ * Class WallDelete
+ * @package SMSkin\VKService\Api\Wall
+ */
 class WallDelete
 {
+    /**
+     * @var string
+     */
+    private $connectionName;
     /**
      * @var ModelVK
      */
@@ -46,11 +54,26 @@ class WallDelete
      */
     public function __construct()
     {
-        $this->vkConnect = new ModelVK();
-        $this->userId = Config::get('vksettings.userId');
-        $this->groupId = '-'.Config::get('vksettings.groupId'); //Group ID указывается со знаком -
+        $vkSettings = Config::get('vksettings.connections');
+        if (!array_key_exists($this->connectionName, $vkSettings)) {
+            $this->connectionName = 'default';
+        }
+
+        $this->vkConnect = new ModelVK($this->connectionName);
+        $this->userId = Config::get('vksettings.connections.'.$this->connectionName.'.userId');
+        $this->groupId = '-'.Config::get('vksettings.connections.'.$this->connectionName.'.groupId');
         $this->messageId = 0;
         $this->toGroup = false;
+    }
+
+    /**
+     * @param string $connectionName
+     * @return $this
+     */
+    public function setConnection($connectionName)
+    {
+        $this->connectionName = $connectionName;
+        return $this;
     }
 
     /**

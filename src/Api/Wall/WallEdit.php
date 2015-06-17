@@ -20,6 +20,10 @@ use SMSkin\VKService\Core\ModelVK;
 class WallEdit
 {
     /**
+     * @var string
+     */
+    private $connectionName;
+    /**
      * @var ModelVK
      */
     private $vkConnect;
@@ -79,17 +83,32 @@ class WallEdit
      */
     public function __construct()
     {
-        $this->vkConnect = new ModelVK();
-        $this->userId = Config::get('vksettings.userId');
-        $this->groupId = '-'.Config::get('vksettings.groupId'); //Group ID указывается со знаком -
-        $this->exportMessage = Config::get('vksettings.exportMessage');
-        $this->exportServices = Config::get('vksettings.exportServices');
+        $vkSettings = Config::get('vksettings.connections');
+        if (!array_key_exists($this->connectionName, $vkSettings)) {
+            $this->connectionName = 'default';
+        }
+
+        $this->vkConnect = new ModelVK($this->connectionName);
+        $this->userId = Config::get('vksettings.connections.'.$this->connectionName.'.userId');
+        $this->groupId = '-'.Config::get('vksettings.connections.'.$this->connectionName.'.groupId');
+        $this->exportMessage = Config::get('vksettings.connections.'.$this->connectionName.'.exportMessage');
+        $this->exportServices = Config::get('vksettings.connections.'.$this->connectionName.'.exportServices');
         $this->messageId = 0;
         $this->messageText = '';
         $this->toGroup = false;
         $this->delay = false;
         $this->attachUrl = false;
         $this->attachments = false;
+    }
+
+    /**
+     * @param string $connectionName
+     * @return $this
+     */
+    public function setConnection($connectionName)
+    {
+        $this->connectionName = $connectionName;
+        return $this;
     }
 
     /**

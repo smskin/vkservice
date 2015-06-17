@@ -22,6 +22,10 @@ use SMSkin\VKService\Core\ModelVK;
 class PhotosStoreOnWall
 {
     /**
+     * @var string
+     */
+    private $connectionName;
+    /**
      * @var ModelVK
      */
     private $vkConnect;
@@ -77,10 +81,25 @@ class PhotosStoreOnWall
      */
     public function __construct()
     {
-        $this->vkConnect = new ModelVK();
-        $this->userId = Config::get('vksettings.userId');
-        $this->groupId = Config::get('vksettings.groupId');
+        $vkSettings = Config::get('vksettings.connections');
+        if (!array_key_exists($this->connectionName, $vkSettings)) {
+            $this->connectionName = 'default';
+        }
+
+        $this->vkConnect = new ModelVK($this->connectionName);
+        $this->userId = Config::get('vksettings.connections.'.$this->connectionName.'.userId');
+        $this->groupId = Config::get('vksettings.connections.'.$this->connectionName.'.groupId');
         $this->toGroup = false;
+    }
+
+    /**
+     * @param string $connectionName
+     * @return $this
+     */
+    public function setConnection($connectionName)
+    {
+        $this->connectionName = $connectionName;
+        return $this;
     }
 
     public function save()
