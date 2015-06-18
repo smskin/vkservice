@@ -26,7 +26,7 @@ Next, add the following service providers to your `config/app.php`.
 	'SMSkin\VKService\ServiceProviders\VKServiceProvider'
 ]
 ```
-Next, run `php artisan vendor:publish`.
+Next, run `php artisan vendor:publish `.
 
 This creates a config file `app/config/vksettings.php`.
 
