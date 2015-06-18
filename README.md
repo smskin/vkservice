@@ -14,7 +14,7 @@ Add the following packages to your `composer.json`
 ]
 ...
 "require": {
-   "smskin/vkservice": "dev-master"
+   "smskin/vkservice": "1.0.0"
 }
 ```
 Next, run `composer update`.
