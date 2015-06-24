@@ -76,9 +76,11 @@ class WallPost
 
     /**
      * Class constructor
+     * @param string $connectionName
      */
-    public function __construct()
+    public function __construct($connectionName = 'default')
     {
+        $this->connectionName = $connectionName;
         $vkSettings = Config::get('vksettings.connections');
         if (!array_key_exists($this->connectionName, $vkSettings)) {
             $this->connectionName = 'default';

@@ -49,7 +49,6 @@ Working with the wall
 An example of sending a message on the wall
 ```
 $post = new WallPost();
-$post->setConnection('default');
 $post->setMessageText('Test message');
 $post->setAttachUrl('http://vk.com');
 $post->setAttachments(array(
@@ -62,7 +61,6 @@ $post->save();
 Example of editing posts
 ```
 $post = new WallEdit();
-$post->setConnection('default');
 $post->whereMessageId(1);
 $post->setMessageText('New message text');
 $post->setAttachUrl('http://google.com');
@@ -76,7 +74,6 @@ $post->save();
 Example of deleting posts
 ```
 $post = new WallDelete();
-$post->setConnection('default');
 $post->whereMessageId(1);
 $post->whereInGroup(true);
 $post->delete();
@@ -84,7 +81,6 @@ $post->delete();
 Example of restoring posts
 ```
 $post = new WallRestore();
-$post->setConnection('default');
 $post->whereMessageId(1);
 $post->whereInGroup(true);
 $post->restore();
@@ -92,7 +88,6 @@ $post->restore();
 Example of uploading image to wall
 ```
 $image = new PhotosStoreOnWall();
-$post->setConnection('default');
 $image->setToGroup(true); //Send a image on the wall of the group
 $image->setImagePath('file.jpg');
 $image->save();
