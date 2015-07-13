@@ -54,6 +54,7 @@ class WallRestore
         $this->connectionName = $connectionName;
         $vkSettings = Config::get('vksettings.connections');
         if (!array_key_exists($this->connectionName, $vkSettings)) {
+            Log::warning('Connection not found in config/vksettings.php. Using default connection.');
             $this->connectionName = 'default';
         }
 

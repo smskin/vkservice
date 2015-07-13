@@ -8,6 +8,7 @@
 
 namespace SMSkin\VKService\Api\Wall;
 
+use Log;
 use SMSkin\VKService\Api\Exceptions\ApiException;
 use SMSkin\VKService\Api\Wall\Results\WallPostResult;
 use SMSkin\VKService\Core\ModelVK;
@@ -83,6 +84,7 @@ class WallPost
         $this->connectionName = $connectionName;
         $vkSettings = Config::get('vksettings.connections');
         if (!array_key_exists($this->connectionName, $vkSettings)) {
+            Log::warning('Connection not found in config/vksettings.php. Using default connection.');
             $this->connectionName = 'default';
         }
 
