@@ -9,6 +9,7 @@
 namespace SMSkin\VKService\Api\Wall;
 
 use Illuminate\Support\Facades\Config;
+use Log;
 use SMSkin\VKService\Api\Exceptions\ApiException;
 use SMSkin\VKService\Api\Wall\Results\WallEditResult;
 use SMSkin\VKService\Core\ModelVK;

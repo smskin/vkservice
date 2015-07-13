@@ -11,6 +11,7 @@ namespace SMSkin\VKService\Api\Photos;
 use App;
 use CURLFile;
 use Illuminate\Support\Facades\Config;
+use Log;
 use SMSkin\VKService\Api\Exceptions\ApiException;
 use SMSkin\VKService\Api\Photos\Results\PhotosStoreOnWallResult;
 use SMSkin\VKService\Core\ModelVK;
