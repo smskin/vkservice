@@ -43,13 +43,17 @@ class ModelVK
      */
     public function method($method, array $params = array())
     {
-        $paramsQuery = '';
-        foreach ($params as $key => $param) {
-            $paramsQuery .= ($paramsQuery === '' ? '' : '&') . $key . '=' . urlencode($param);
-        }
-        $response = file_get_contents(
-            $this->url . $method . '?' . ($paramsQuery ? $paramsQuery . '&' : '') . 'access_token=' . $this->accessToken
-        );
+       $params['access_token']=$this->accessToken;
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_HEADER, 0);
+        curl_setopt($curl, CURLOPT_VERBOSE, 0);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible;)');
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_URL, $this->url . $method);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
+        $response = curl_exec($curl);
+        curl_close($curl);
 
         if ($response) {
             return $response;
